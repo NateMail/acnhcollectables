@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
+import { Row, Card } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import FlowerCards from "./flowerCards";
 import axios from "axios";
@@ -57,6 +57,14 @@ const GetFlowers = () => {
 
   return (
     <div className="cardsContainer">
+      <Card className="top-card">
+        <Card.Body>
+          <Card.Title>
+            <h1>All Flowers</h1>
+          </Card.Title>
+        </Card.Body>
+      </Card>
+
       <Row className="cardsRow">{cards(flowers)}</Row>
     </div>
   );

@@ -59,7 +59,7 @@ const GetFish = () => {
 
   return (
     <div className="cardsContainer">
-      <Card className="all">
+      <Card className="top-card">
         <Card.Body>
           <Card.Title>
             <h1>All of the Sea Creatures</h1>
