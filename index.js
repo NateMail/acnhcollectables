@@ -43,7 +43,7 @@ app.use("/", flowerRoutes);
 app.use("/", monthRoutes);
 app.use("/", seaRoutes);
 
-// Heroku
+// Heroku Ready
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.get("*", (req, res) => {
