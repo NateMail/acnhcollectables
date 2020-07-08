@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import BugCards from "./bugCards";
 import "../stylingComponents/cards.css";
 import Loading from "../loading";
+import axios from "axios";
 
 const GetBugs = () => {
   const [bugs, setBugs] = useState([]);
@@ -11,19 +12,18 @@ const GetBugs = () => {
   const [redirect, setRedirect] = useState(false);
   const [error, setError] = useState("");
 
+  const bugsGetter = async () => {
+    const result = await axios("/bug");
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
+    setBugs(result.data);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    fetch(`/bug`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setBugs(response);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
+    bugsGetter();
   }, []);
 
   function cards(bugs) {

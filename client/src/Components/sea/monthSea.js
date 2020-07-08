@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Card } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { fullMonth } from "../helpers";
+import axios from "axios";
 import SeaCards from "./seaCards";
 import Loading from "../loading";
 import "../stylingComponents/cards.css";
@@ -29,39 +30,29 @@ const MonthSea = (props) => {
 
   const hem = ["north", "south"];
 
-  function north(m) {
-    fetch(`/seas/north/${m}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setCreatures(response);
-        setLoading(false);
-        setMonth(m);
-        setHemi("North");
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
-  }
+  const north = async (m) => {
+    const result = await axios(`/seas/north/${m}`);
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
+    setCreatures(result.data);
+    setLoading(false);
+    setMonth(m);
+    setHemi("North");
+  };
 
-  function south(m) {
-    fetch(`/seas/south/${m}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setCreatures(response);
-        setLoading(false);
-        setMonth(m);
-        setHemi("South");
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
-  }
+  const south = async (m) => {
+    const result = await axios(`/seas/south/${m}`);
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
+    setCreatures(result.data);
+    setLoading(false);
+    setMonth(m);
+    setHemi("South");
+  };
 
   useEffect(() => {
     if (

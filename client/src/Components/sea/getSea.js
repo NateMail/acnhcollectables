@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { Row, Card } from "react-bootstrap";
+import axios from "axios";
 import SeaCards from "./seaCards";
 import "../stylingComponents/cards.css";
 import Loading from "../loading";
@@ -11,19 +12,18 @@ const GetFish = () => {
   const [redirect, setRedirect] = useState(false);
   const [error, setError] = useState("");
 
+  const getSea = async () => {
+    const result = await axios("/seacreature");
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
+    setSeas(result.data);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    fetch(`/seacreature`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setSeas(response);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
+    getSea();
   }, []);
 
   function cards(seas) {

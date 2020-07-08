@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Card } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { fullMonth } from "../helpers";
+import axios from "axios";
 import BugCards from "./bugCards";
 import Loading from "../loading";
 import "../stylingComponents/cards.css";
@@ -29,39 +30,31 @@ const MonthBugs = (props) => {
 
   const hem = ["north", "south"];
 
-  function north(m) {
-    fetch(`/bug/north/${m}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setBugs(response);
-        setLoading(false);
-        setMonth(m);
-        setHemi("North");
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
-  }
+  const north = async (m) => {
+    const result = await axios(`/bug/north/${m}`);
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
 
-  function south(m) {
-    fetch(`/bug/south/${m}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setBugs(response);
-        setLoading(false);
-        setMonth(m);
-        setHemi("South");
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
-  }
+    setBugs(result.data);
+    setLoading(false);
+    setMonth(m);
+    setHemi("North");
+  };
+
+  const south = async (m) => {
+    const result = await axios(`/bug/south/${m}`);
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
+
+    setBugs(result.data);
+    setLoading(false);
+    setMonth(m);
+    setHemi("South");
+  };
 
   useEffect(() => {
     if (

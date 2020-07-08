@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import FlowerCards from "./flowerCards";
+import axios from "axios";
 import Loading from "../loading";
 import "../stylingComponents/cards.css";
 
@@ -11,19 +12,18 @@ const GetFlowers = () => {
   const [error, setError] = useState(" ");
   const [redirect, setRedirect] = useState(false);
 
+  const getFlower = async () => {
+    const result = await axios("/flowers");
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
+    setFlowers(result.data);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    fetch(`/flowers`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setFlowers(response);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
+    getFlower();
   }, []);
 
   function cards(flowers) {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Card } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import FlowerCards from "./flowerCards";
+import axios from "axios";
 import Loading from "../loading";
 import "../stylingComponents/cards.css";
 
@@ -23,21 +24,16 @@ const GetByGenus = (props) => {
     "windflower",
   ];
 
-  function getGenus(g) {
-    fetch(`/flowers/${g}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setFlowers(response);
-        setLoading(false);
-        setGenus(g);
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
-  }
+  const getGenus = async (g) => {
+    const result = await axios(`/flowers/${g}`);
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
+    setFlowers(result.data);
+    setLoading(false);
+    setGenus(g);
+  };
 
   useEffect(() => {
     if (gen.includes(props.match.params.genus)) {

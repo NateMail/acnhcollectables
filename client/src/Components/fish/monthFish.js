@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Card } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { fullMonth } from "../helpers";
+import axios from "axios";
 import FishCards from "./fishCards";
 import Loading from "../loading";
 import "../stylingComponents/cards.css";
@@ -29,39 +30,29 @@ const MonthFish = (props) => {
 
   const hem = ["north", "south"];
 
-  function north(m) {
-    fetch(`/fishs/north/${m}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setFishs(response);
-        setLoading(false);
-        setMonth(m);
-        setHemi("North");
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
-  }
+  const north = async (m) => {
+    const result = await axios(`/fishs/north/${m}`);
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
+    setFishs(result.data);
+    setLoading(false);
+    setMonth(m);
+    setHemi("North");
+  };
 
-  function south(m) {
-    fetch(`/fishs/south/${m}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setFishs(response);
-        setLoading(false);
-        setMonth(m);
-        setHemi("South");
-      })
-      .catch((err) => {
-        setError(err);
-        setRedirect(true);
-      });
-  }
+  const south = async (m) => {
+    const result = await axios(`/fishs/south/${m}`);
+    if (result.error) {
+      setError(result.error);
+      setRedirect(true);
+    }
+    setFishs(result.data);
+    setLoading(false);
+    setMonth(m);
+    setHemi("South");
+  };
 
   useEffect(() => {
     if (
