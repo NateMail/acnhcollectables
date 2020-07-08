@@ -1,7 +1,4 @@
 const Flower = require("../models/flower");
-const formidable = require("formidable");
-const _ = require("lodash");
-const fs = require("fs");
 
 exports.allFlowers = (req, res) => {
   const flowers = Flower.find()
