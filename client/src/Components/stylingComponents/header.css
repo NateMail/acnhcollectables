@@ -1,0 +1,20 @@
+.header {
+  background-image: url(../../Photos/acnhsky.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 35vh;
+  border: 5px solid black;
+  justify-content: center;
+  position: relative;
+  width: 100vw;
+}
+
+.header-header {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}

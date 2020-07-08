@@ -1,0 +1,7 @@
+#root {
+  background-image: url(./Photos/tomNookLeaf.jpg);
+  background-size: repeat;
+  background-repeat: round;
+  height: 100%;
+  width: 100%;
+}
