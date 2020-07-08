@@ -11,7 +11,7 @@ const SeaCards = (props) => {
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
         <Card className="card-display">
           <Card.Img className="bugs-fish-img" variant="top" src={props.photo} />
-          <Card.Body className="fish-body">
+          <Card.Body className="sea-body">
             <Card.Title className="text-center">
               <h1>{props.name}</h1>
             </Card.Title>
@@ -28,7 +28,7 @@ const SeaCards = (props) => {
 
         <Card className="card-display">
           <Card.Img className="bugs-fish-img" variant="top" src={props.photo} />
-          <Card.Body className="fish-body">
+          <Card.Body className="sea-body">
             <Card.Title>{props.name}</Card.Title>
             <Card.Text>Sells for: {props.price} bells</Card.Text>
             <Card.Text>Swimming pattern: {props.swim}</Card.Text>

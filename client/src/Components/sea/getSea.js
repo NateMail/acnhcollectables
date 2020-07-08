@@ -15,7 +15,6 @@ const GetFish = () => {
   const getSea = async () => {
     const result = await axios("/seacreature");
     if (result.error) {
-      console.log(result.error);
       setError(result.error);
       setRedirect(true);
     }

@@ -40,6 +40,11 @@
   background-color: #fddea1;
 }
 
+.sea-body {
+  border-top: 5px solid black;
+  background-color: #f0e97e;
+}
+
 .month {
   color: black;
   background-color: #83d2fd;
