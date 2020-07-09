@@ -42,7 +42,7 @@
 
 .sea-body {
   border-top: 5px solid black;
-  background-color: #f0e97e;
+  background-color: #fdeab3;
 }
 
 .month {
@@ -98,4 +98,27 @@
   padding: 1%;
   text-align: center;
   width: 25rem;
+}
+
+.fossil-card-display {
+  border: 5px black solid;
+  box-shadow: 10px 5px 10px black;
+  height: 35rem;
+  text-align: center;
+  width: 20rem;
+}
+
+.fossil-img {
+  background-color: #46468c;
+}
+
+.fossil-body {
+  border-top: 5px black solid;
+  background-color: #be8752;
+}
+
+.fossil-price {
+  background-color: #dedcd2;
+  border-radius: 50%;
+  margin-top: 5px;
 }

@@ -12,6 +12,7 @@ const Navigation = () => (
       <Nav className="mr-auto">
         <Nav.Link href="/bugs">Bugs</Nav.Link>
         <Nav.Link href="/fish">Fish</Nav.Link>
+        <Nav.Link href="/fossils">Fossils</Nav.Link>
         <Nav.Link href="/sea">Sea Creatures</Nav.Link>
 
         <NavDropdown title="Flowers" id="collasible-nav-dropdown">

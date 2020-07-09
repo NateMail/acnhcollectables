@@ -30,6 +30,7 @@ const fishRoutes = require("./routes/fish");
 const flowerRoutes = require("./routes/flower");
 const monthRoutes = require("./routes/month");
 const seaRoutes = require("./routes/seaCreature");
+const fossilRoutes = require("./routes/fossil");
 
 // Middeware
 app.use(morgan("dev"));
@@ -42,6 +43,7 @@ app.use("/", fishRoutes);
 app.use("/", flowerRoutes);
 app.use("/", monthRoutes);
 app.use("/", seaRoutes);
+app.use("/", fossilRoutes);
 
 // Heroku Ready
 app.use(express.static(path.join(__dirname, "client", "build")));

@@ -31,7 +31,6 @@ const Home = () => (
       <h2 className="text-center">Comming Soon...</h2>
       <ul className="text-center" style={{ listStyle: "none" }}>
         <li>Art</li>
-        <li>Fossils</li>
         <li>Items</li>
         <li>Villagers</li>
       </ul>

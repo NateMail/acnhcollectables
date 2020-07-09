@@ -24,6 +24,9 @@ import getByGenus from "./Components/flower/getByGenus";
 import getSea from "./Components/sea/getSea";
 import MonthSea from "./Components/sea/monthSea";
 
+// Fossil Route
+import getFossils from "./Components/fossils/getFossils";
+
 const MainRouter = () => (
   <div>
     <Header />
@@ -33,6 +36,7 @@ const MainRouter = () => (
       <Route exact path="/bugs" component={getBugs} />
       <Route exact path="/fish" component={getFish} />
       <Route exact path="/sea" component={getSea} />
+      <Route exact path="/fossils" component={getFossils} />
       <Route exact path="/flower" component={getFlowers} />
       <Route exact path="/flower/:genus" component={getByGenus} />
       <Route exact path="/fish/:hem/:month" component={MonthFish} />
