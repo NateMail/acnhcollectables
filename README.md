@@ -16,7 +16,7 @@ The biggest challenge with this application had to be the deployment. The applic
 
 ### Future Plans
 
-To add more. Add in the fossils, villagers, and items. As well as updating some of the components for the future.
+To add more. Add in the art, villagers, and items. As well as updating some of the components for the future.
 
 ### User Stories:
 
