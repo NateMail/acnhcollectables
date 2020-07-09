@@ -24,7 +24,7 @@ import getByGenus from "./Components/flower/getByGenus";
 import getSea from "./Components/sea/getSea";
 import MonthSea from "./Components/sea/monthSea";
 
-// Fossil Route
+// Fossil Routes
 import getFossils from "./Components/fossils/getFossils";
 
 const MainRouter = () => (
