@@ -45,7 +45,7 @@ app.use("/", monthRoutes);
 app.use("/", seaRoutes);
 app.use("/", fossilRoutes);
 
-// Heroku Ready
+// Heroku Config
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.get("*", (req, res) => {
