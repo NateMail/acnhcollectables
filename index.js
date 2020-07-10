@@ -23,7 +23,7 @@ mongoose.connection.on("error", (error) => {
   console.log(`DB connection error: ${error.message}`);
 });
 
-// App Vars
+// App
 const port = process.env.PORT || "5000";
 const bugRoutes = require("./routes/bug");
 const fishRoutes = require("./routes/fish");
